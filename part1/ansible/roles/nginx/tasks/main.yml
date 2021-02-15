@@ -1,0 +1,26 @@
+  - name: install latest nginx
+    package:
+      name: nginx
+      state: latest
+
+  - name: remove default nginx configuration
+    file:
+      name: /etc/nginx/sites-enabled/default
+      state: absent
+
+  - name: configure nginx for public subnet
+    when: subnet == 'public'
+    template:
+      src: templates/public-nginx.conf.j2
+      dest: /etc/nginx/nginx.conf
+
+  - name: configure nginx for private subnet
+    when: subnet == 'private'
+    template:
+      src: templates/private-nginx.conf
+      dest: /etc/nginx/nginx.conf
+
+  - name: start nginx
+    service:
+      name: nginx
+      state: started

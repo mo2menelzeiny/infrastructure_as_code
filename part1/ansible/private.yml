@@ -1,0 +1,6 @@
+- name: private server hello world
+  hosts: 127.0.0.1
+  vars:
+    subnet: 'private'
+  roles:
+    - nginx
