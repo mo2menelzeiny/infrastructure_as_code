@@ -12,12 +12,16 @@ build {
 
   provisioner "shell" {
     inline = [
-      "echo Connected!"
+      "echo Connected!",
+      "sudo yum install -y epel-release",
+      "sudo yum install -y ansible"
     ]
   }
 
-  provisioner "ansible" {
+  provisioner "ansible-local" {
     playbook_file = "../ansible/private.yml"
+    playbook_dir = "../ansible"
+    extra_arguments =  [ "-vvvv" ]
   }
 
   post-processor "manifest" {}

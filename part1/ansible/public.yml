@@ -1,8 +1,8 @@
-- name: private server hello world
+- name: public proxy servers
   hosts: 127.0.0.1
   become: true
   tasks:
-    - name: install nginx
+    - name: install  nginx
       yum:
         name: nginx
         state: present
@@ -12,9 +12,9 @@
         name: /etc/nginx/sites-enabled/default
         state: absent
 
-    - name: configure nginx for private subnet
+    - name: configure nginx for public subnet
       template:
-        src: private-nginx.conf
+        src: public-nginx.conf
         dest: /etc/nginx/nginx.conf
 
     - name: start nginx
