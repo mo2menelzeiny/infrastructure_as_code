@@ -1,12 +1,8 @@
-Build Hello World! ami for private servers using packer
-also uses ami id from manifest to spawn the private instances inside terraform dir
-
-`cd packer`
+Build Hello World! ami for private servers using packer and ansible to configure nginx
 
 `packer build template.pkr.hcl`
 
-`cd terraform`
+Deploy terraform resources and regenerate the dynamic inventory using terraform output template
 
 `terraform apply`
 
-The dynamic inventory is generated using terraform output template

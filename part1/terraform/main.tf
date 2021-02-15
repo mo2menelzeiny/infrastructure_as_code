@@ -146,9 +146,18 @@ resource "aws_instance" "part1_public" {
 
 }
 
+data "aws_ami" "hello_world_centos8" {
+  most_recent = true
+  owners = ["self"]
+  filter {
+    name = "tag:Name"
+    values = ["hello-world-centos8"]
+  }
+}
+
 resource "aws_instance" "part1_private" {
   count = 2
-  ami = var.centos8_ami_id
+  ami = data.aws_ami.hello_world_centos8.id
   instance_type = var.ec2_size
   vpc_security_group_ids = [aws_security_group.part1_private.id]
   subnet_id = aws_subnet.part1_private2.id

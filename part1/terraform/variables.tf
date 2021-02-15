@@ -17,7 +17,3 @@ variable "ec2_size" {
 variable "centos8_ami_id" {
   default = "ami-0e201bc52c64d7b5a"
 }
-
-variable "custom_centos8_ami_id" {
-  default = "ami-0e201bc52c64d7b5a"
-}
