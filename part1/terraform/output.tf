@@ -1,7 +1,3 @@
-output "nat" {
-  value = aws_nat_gateway.part1
-}
-
 output "private_instances" {
   value = aws_instance.part1_private
 }

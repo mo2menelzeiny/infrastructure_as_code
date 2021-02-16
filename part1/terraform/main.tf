@@ -99,10 +99,17 @@ resource "aws_security_group" "part1_public" {
   vpc_id = aws_vpc.part1.id
 
   ingress {
-    cidr_blocks = ["0.0.0.0/0"]
     from_port = 80
     protocol = "tcp"
     to_port = 80
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port = 22
+    protocol = "tcp"
+    to_port = 22
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
   egress {
@@ -117,17 +124,10 @@ resource "aws_security_group" "part1_private" {
   vpc_id = aws_vpc.part1.id
 
   ingress {
-    security_groups = [aws_security_group.part1_public.id]
     from_port = 80
     protocol = "tcp"
     to_port = 80
-  }
-
-  egress {
     security_groups = [aws_security_group.part1_public.id]
-    from_port = 80
-    to_port = 80
-    protocol = "tcp"
   }
 }
 
