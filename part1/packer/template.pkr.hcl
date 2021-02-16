@@ -24,8 +24,8 @@ build {
   }
 
   provisioner "ansible-local" {
-    playbook_file = "../ansible/private.yml"
-    playbook_dir = "../ansible"
+    playbook_file = "ansible/private.yml"
+    playbook_dir = "ansible"
   }
 
   post-processor "manifest" {}
