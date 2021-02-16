@@ -1,11 +1,17 @@
 - name: private server hello world
   hosts: 127.0.0.1
-  become: true
+  become: yes
   tasks:
     - name: install nginx
       yum:
         name: nginx
         state: present
+
+    - name: start nginx
+      service:
+        name: nginx
+        state: started
+        enabled: yes
 
     - name: configure nginx for private subnet
       template:
