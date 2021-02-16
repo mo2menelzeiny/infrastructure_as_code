@@ -196,4 +196,5 @@ terraform.rc
 .idea
 console-credentials
 inventory.yml
+packer-manifest.json
 
