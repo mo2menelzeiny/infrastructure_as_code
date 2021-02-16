@@ -4,6 +4,8 @@
 
 2 - Deploy terraform resources and regenerate the dynamic inventory using terraform output template
 
+`terraform init`
+
 `terraform apply`
 
 3 - Run Ansible playbook to configure public servers from the generated inventory
